@@ -1,0 +1,7 @@
+# Gradle
+.gradle/
+build/
+run/
+run-data/
+.DS_Store
+out/
