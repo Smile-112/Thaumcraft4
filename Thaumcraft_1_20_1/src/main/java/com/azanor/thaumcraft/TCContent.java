@@ -27,7 +27,7 @@ public class TCContent {
             () -> new BlockItem(ARCANE_STONE.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> THAUMONOMICON = ITEMS.register("thaumonomicon",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new com.azanor.thaumcraft.item.ThaumonomiconItem());
 
     public static final RegistryObject<CreativeModeTab> TAB = TABS.register("thaumcraft",
             () -> CreativeModeTab.builder()
