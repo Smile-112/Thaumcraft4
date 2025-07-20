@@ -668,6 +668,8 @@ wandtable.text3=Start Upgrade
 #
 # Other
 itemGroup.thaumcraft=Thaumcraft
+block.thaumcraft.arcane_stone=Arcane Stone Block
+item.thaumcraft.thaumonomicon=Thaumonomicon
 nodetype.NORMAL.name=Normal
 nodetype.UNSTABLE.name=Unstable
 nodetype.DARK.name=Sinister

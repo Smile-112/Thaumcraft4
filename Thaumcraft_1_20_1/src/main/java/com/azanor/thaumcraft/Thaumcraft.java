@@ -17,6 +17,9 @@ public class Thaumcraft {
     public Thaumcraft() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setup);
+        TCContent.BLOCKS.register(modEventBus);
+        TCContent.ITEMS.register(modEventBus);
+        TCContent.TABS.register(modEventBus);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientSetup::init);
     }
 
