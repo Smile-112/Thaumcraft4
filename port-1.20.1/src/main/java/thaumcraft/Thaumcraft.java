@@ -5,6 +5,8 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import thaumcraft.compat.CuriosCompat;
+import thaumcraft.init.ModBlocks;
+import thaumcraft.init.ModItems;
 
 @Mod(Thaumcraft.MODID)
 public class Thaumcraft {
@@ -15,6 +17,8 @@ public class Thaumcraft {
         if (ModList.get().isLoaded("curios")) {
             CuriosCompat.registerSlots();
         }
-        // TODO: register blocks, items, etc.
+
+        ModBlocks.register(bus);
+        ModItems.register(bus);
     }
 }
