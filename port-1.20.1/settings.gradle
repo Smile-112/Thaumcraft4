@@ -1,9 +1,10 @@
-rootProject.name = 'Thaumcraft'
 pluginManagement {
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = "https://maven.minecraftforge.net" }
         gradlePluginPortal()
         mavenCentral()
     }
 }
+rootProject.name = 'Thaumcraft'
+
 
