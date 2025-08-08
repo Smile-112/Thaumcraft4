@@ -5,8 +5,9 @@ This file tracks high-level tasks for porting the mod. Update as tasks are compl
 ## Task List
 1. **Set up Gradle build system**
    - Add Gradle wrapper and scripts *(done)*
-   - Configure Mojang + Parchment mappings
-   - Add dependencies: Forge 1.20.1, Curios, EMI/JEI
+   - Configure Mojang + Parchment mappings *(done)*
+   - Add dependencies: Forge 1.20.1, optional Curios, EMI/JEI *(done)*
+   - Detect Curios at runtime and register Curios slots for Thaumcraft items *(done)*
 2. **Base infrastructure**
    - Replace legacy registration with `DeferredRegister`
    - Update config, resource loading, and data generators
@@ -29,4 +30,4 @@ This file tracks high-level tasks for porting the mod. Update as tasks are compl
    - Run builds, launch client/server, profile performance
 
 ## Next Step
-Configure `port-1.20.1/build.gradle` with Mojang + Parchment mappings and add dependencies for Forge 1.20.1, Curios, and EMI/JEI.
+Replace legacy registration with `DeferredRegister`
