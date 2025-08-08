@@ -2,60 +2,68 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+' 
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
-version = '0.1'
+version = '0.3'
 group = 'thaumcraft'
 archivesBaseName = 'Thaumcraft'
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+    toolchain { languageVersion = JavaLanguageVersion.of(17) }
+    withJavadocJar()
+    withSourcesJar()
 }
 
 minecraft {
     mappings channel: 'parchment', version: '2023.09.03-1.20.1'
-
+    copyIdeResources = true
     runs {
         client {
             workingDirectory project.file('run')
-            property 'forge.logging.console.level', 'debug'
+            args '--username', 'Dev'
+            mods { thaumcraft { source sourceSets.main } }
         }
         server {
             workingDirectory project.file('run')
+            mods { thaumcraft { source sourceSets.main } }
         }
         data {
             workingDirectory project.file('run')
             args '--mod', 'thaumcraft', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            mods { thaumcraft { source sourceSets.main } }
         }
     }
 }
 
 repositories {
-    maven { url 'https://maven.parchmentmc.net/' }
-    maven { url 'https://maven.theillusivec4.top/' }
-    maven { url 'https://maven.blamejared.com/' }
-    maven { url 'https://maven.terraformersmc.com/releases/' }
+    maven { url = 'https://maven.minecraftforge.net' }
+    maven { url = 'https://maven.parchmentmc.org' }
+    maven { url = 'https://maven.theillusivec4.top/' } // Curios
+    mavenCentral()
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.1.0'
-    compileOnly fg.deobf('top.theillusivec4.curios:curios-forge:5.14.1+1.20.1')
-    runtimeOnly fg.deobf('top.theillusivec4.curios:curios-forge:5.14.1+1.20.1')
-    runtimeOnly fg.deobf('dev.emi:emi-forge:1.1.22+1.20.1')
-    runtimeOnly fg.deobf('mezz.jei:jei-1.20.1-forge:15.20.0.112')
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.23'
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:5.7.0+1.20.1")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:5.7.0+1.20.1")
 }
-sourceSets.main.resources.srcDirs += 'src/generated/resources'
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact tasks.jar
-        }
-    }
-    repositories {
-        mavenLocal()
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title"     : "Thaumcraft",
+                "Specification-Vendor"    : "private",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.version,
+                "Implementation-Vendor"   : "Smile_112",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
 }

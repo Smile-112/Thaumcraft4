@@ -1,0 +1,56 @@
+# Texture Mapping (Old → New)
+
+- assets/thaumcraft/textures/items/thaumonomicon.png  →  assets/thaumcraft/textures/item/thaumonomicon.png   (Used by item `thaumonomicon`)
+- [MISSING in old assets] thaumometer texture — keeping generated icon: assets/thaumcraft/textures/item/thaumometer.png
+
+## Aspect Icons (copied for UI)
+- assets/thaumcraft/textures/aspects/_back.png  →  assets/thaumcraft/textures/aspects/_back.png
+- assets/thaumcraft/textures/aspects/_unknown.png  →  assets/thaumcraft/textures/aspects/_unknown.png
+- assets/thaumcraft/textures/aspects/aer.png  →  assets/thaumcraft/textures/aspects/aer.png
+- assets/thaumcraft/textures/aspects/alienis.png  →  assets/thaumcraft/textures/aspects/alienis.png
+- assets/thaumcraft/textures/aspects/aqua.png  →  assets/thaumcraft/textures/aspects/aqua.png
+- assets/thaumcraft/textures/aspects/arbor.png  →  assets/thaumcraft/textures/aspects/arbor.png
+- assets/thaumcraft/textures/aspects/auram.png  →  assets/thaumcraft/textures/aspects/auram.png
+- assets/thaumcraft/textures/aspects/bestia.png  →  assets/thaumcraft/textures/aspects/bestia.png
+- assets/thaumcraft/textures/aspects/cognitio.png  →  assets/thaumcraft/textures/aspects/cognitio.png
+- assets/thaumcraft/textures/aspects/corpus.png  →  assets/thaumcraft/textures/aspects/corpus.png
+- assets/thaumcraft/textures/aspects/exanimis.png  →  assets/thaumcraft/textures/aspects/exanimis.png
+- assets/thaumcraft/textures/aspects/fabrico.png  →  assets/thaumcraft/textures/aspects/fabrico.png
+- assets/thaumcraft/textures/aspects/fames.png  →  assets/thaumcraft/textures/aspects/fames.png
+- assets/thaumcraft/textures/aspects/gelum.png  →  assets/thaumcraft/textures/aspects/gelum.png
+- assets/thaumcraft/textures/aspects/herba.png  →  assets/thaumcraft/textures/aspects/herba.png
+- assets/thaumcraft/textures/aspects/humanus.png  →  assets/thaumcraft/textures/aspects/humanus.png
+- assets/thaumcraft/textures/aspects/ignis.png  →  assets/thaumcraft/textures/aspects/ignis.png
+- assets/thaumcraft/textures/aspects/instrumentum.png  →  assets/thaumcraft/textures/aspects/instrumentum.png
+- assets/thaumcraft/textures/aspects/iter.png  →  assets/thaumcraft/textures/aspects/iter.png
+- assets/thaumcraft/textures/aspects/limus.png  →  assets/thaumcraft/textures/aspects/limus.png
+- assets/thaumcraft/textures/aspects/lucrum.png  →  assets/thaumcraft/textures/aspects/lucrum.png
+- assets/thaumcraft/textures/aspects/lux.png  →  assets/thaumcraft/textures/aspects/lux.png
+- assets/thaumcraft/textures/aspects/machina.png  →  assets/thaumcraft/textures/aspects/machina.png
+- assets/thaumcraft/textures/aspects/messis.png  →  assets/thaumcraft/textures/aspects/messis.png
+- assets/thaumcraft/textures/aspects/metallum.png  →  assets/thaumcraft/textures/aspects/metallum.png
+- assets/thaumcraft/textures/aspects/meto.png  →  assets/thaumcraft/textures/aspects/meto.png
+- assets/thaumcraft/textures/aspects/mortuus.png  →  assets/thaumcraft/textures/aspects/mortuus.png
+- assets/thaumcraft/textures/aspects/motus.png  →  assets/thaumcraft/textures/aspects/motus.png
+- assets/thaumcraft/textures/aspects/ordo.png  →  assets/thaumcraft/textures/aspects/ordo.png
+- assets/thaumcraft/textures/aspects/pannus.png  →  assets/thaumcraft/textures/aspects/pannus.png
+- assets/thaumcraft/textures/aspects/perditio.png  →  assets/thaumcraft/textures/aspects/perditio.png
+- assets/thaumcraft/textures/aspects/perfodio.png  →  assets/thaumcraft/textures/aspects/perfodio.png
+- assets/thaumcraft/textures/aspects/permutatio.png  →  assets/thaumcraft/textures/aspects/permutatio.png
+- assets/thaumcraft/textures/aspects/potentia.png  →  assets/thaumcraft/textures/aspects/potentia.png
+- assets/thaumcraft/textures/aspects/praecantatio.png  →  assets/thaumcraft/textures/aspects/praecantatio.png
+- assets/thaumcraft/textures/aspects/sano.png  →  assets/thaumcraft/textures/aspects/sano.png
+- assets/thaumcraft/textures/aspects/sensus.png  →  assets/thaumcraft/textures/aspects/sensus.png
+- assets/thaumcraft/textures/aspects/spiritus.png  →  assets/thaumcraft/textures/aspects/spiritus.png
+- assets/thaumcraft/textures/aspects/telum.png  →  assets/thaumcraft/textures/aspects/telum.png
+- assets/thaumcraft/textures/aspects/tempestas.png  →  assets/thaumcraft/textures/aspects/tempestas.png
+- assets/thaumcraft/textures/aspects/tenebrae.png  →  assets/thaumcraft/textures/aspects/tenebrae.png
+- assets/thaumcraft/textures/aspects/terra.png  →  assets/thaumcraft/textures/aspects/terra.png
+- assets/thaumcraft/textures/aspects/tutamen.png  →  assets/thaumcraft/textures/aspects/tutamen.png
+- assets/thaumcraft/textures/aspects/vacuos.png  →  assets/thaumcraft/textures/aspects/vacuos.png
+- assets/thaumcraft/textures/aspects/venenum.png  →  assets/thaumcraft/textures/aspects/venenum.png
+- assets/thaumcraft/textures/aspects/victus.png  →  assets/thaumcraft/textures/aspects/victus.png
+- assets/thaumcraft/textures/aspects/vinculum.png  →  assets/thaumcraft/textures/aspects/vinculum.png
+- assets/thaumcraft/textures/aspects/vitium.png  →  assets/thaumcraft/textures/aspects/vitium.png
+- assets/thaumcraft/textures/aspects/vitreus.png  →  assets/thaumcraft/textures/aspects/vitreus.png
+- assets/thaumcraft/textures/aspects/volatus.png  →  assets/thaumcraft/textures/aspects/volatus.png
