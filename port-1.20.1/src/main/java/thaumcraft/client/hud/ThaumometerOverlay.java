@@ -1,18 +1,22 @@
+
 package thaumcraft.client.hud;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.gui.overlay.ForgeGui;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-
 import thaumcraft.Thaumcraft;
 
 public class ThaumometerOverlay implements IGuiOverlay {
@@ -24,7 +28,7 @@ public class ThaumometerOverlay implements IGuiOverlay {
     public void render(ForgeGui gui, GuiGraphics gg, float partialTick, int width, int height) {
         var mc = Minecraft.getInstance();
         var player = mc.player;
-        if (player == null) return;
+        if (player == null || mc.level == null) return;
 
         var held = player.getItemInHand(InteractionHand.MAIN_HAND);
         boolean show = false;
@@ -42,8 +46,20 @@ public class ThaumometerOverlay implements IGuiOverlay {
         gg.blit(FRAME, x, y, 0, 0, size, size, size, size);
         gg.blit(GLASS, x, y, 0, 0, size, size, size, size);
 
-        if (mc.hitResult != null) {
-            String name = mc.hitResult.getType().toString();
+        // Decide target name (or nothing if MISS)
+        Component name = null;
+        HitResult hit = mc.hitResult;
+        if (hit != null) {
+            if (hit.getType() == HitResult.Type.BLOCK) {
+                BlockHitResult bhr = (BlockHitResult) hit;
+                BlockState state = mc.level.getBlockState(bhr.getBlockPos());
+                name = state.getBlock().getName();
+            } else if (hit.getType() == HitResult.Type.ENTITY) {
+                EntityHitResult ehr = (EntityHitResult) hit;
+                name = ehr.getEntity().getDisplayName();
+            }
+        }
+        if (name != null) {
             gg.drawCenteredString(mc.font, name, width / 2, y + size + 8, 0xFFFFFF);
         }
     }
