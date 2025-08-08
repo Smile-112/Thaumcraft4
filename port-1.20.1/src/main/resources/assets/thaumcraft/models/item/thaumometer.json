@@ -1,103 +1,6 @@
 {
-  "textures": {
-    "frame": "thaumcraft:item/thaumometer_frame",
-    "glass": "thaumcraft:item/thaumometer_glass",
-    "particle": "thaumcraft:item/thaumometer_frame"
-  },
-  "elements": [
-    {
-      "from": [
-        4,
-        4,
-        7.8
-      ],
-      "to": [
-        12,
-        12,
-        8.2
-      ],
-      "faces": {
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#glass"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#glass",
-          "cullface": "south"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#frame"
-        },
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#frame"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#frame"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#frame"
-        }
-      }
-    },
-    {
-      "from": [
-        3,
-        3,
-        8.2
-      ],
-      "to": [
-        13,
-        13,
-        9.2
-      ],
-      "faces": {
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#frame"
-        }
-      }
-    }
-  ],
+  "parent": "builtin/entity",
+  "gui_light": "front",
   "display": {
     "thirdperson_righthand": {
       "rotation": [
@@ -128,9 +31,9 @@
         0
       ],
       "scale": [
-        1.15,
-        1.15,
-        1.15
+        1.1,
+        1.1,
+        1.1
       ]
     },
     "ground": {
@@ -145,9 +48,9 @@
         0
       ],
       "scale": [
-        1.1,
-        1.1,
-        1.1
+        1.05,
+        1.05,
+        1.05
       ]
     },
     "gui": {
