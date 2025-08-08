@@ -20,6 +20,11 @@ import net.minecraftforge.network.PacketDistributor;
 import thaumcraft.network.NetworkHandler;
 import thaumcraft.network.ScanRequestPacket;
 
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import java.util.function.Consumer;
+import thaumcraft.client.render.ThaumometerBEWLR;
+
 public class ThaumometerItem extends Item {
     private static final int SCAN_TICKS_WORLD = 40;
     private static final int SCAN_TICKS_INVENTORY = 30;
@@ -31,6 +36,17 @@ public class ThaumometerItem extends Item {
 
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.NONE; }
     @Override public int getUseDuration(ItemStack stack) { return 72000; }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private final BlockEntityWithoutLevelRenderer renderer = new ThaumometerBEWLR();
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                return renderer;
+            }
+        });
+    }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
