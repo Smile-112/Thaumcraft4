@@ -16,8 +16,6 @@ import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.network.PacketDistributor;
 import thaumcraft.network.NetworkHandler;
 import thaumcraft.network.ScanRequestPacket;
@@ -28,7 +26,7 @@ public class ThaumometerItem extends Item {
 
     public ThaumometerItem(Properties props) {
         super(props);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () -> MinecraftForge.EVENT_BUS.register(new ClientHook()));
+        MinecraftForge.EVENT_BUS.register(new ClientHook());
     }
 
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.SPYGLASS; }
@@ -97,13 +95,28 @@ public class ThaumometerItem extends Item {
             if (!(mc.screen instanceof net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<?> screen)) return;
             if (!rmbDown) { invHoldTicks = 0; hoveredSlotIndex = -1; return; }
 
+            // determine the slot under the mouse without using private isHovering
             int mouseX = (int) event.getMouseX();
             int mouseY = (int) event.getMouseY();
             hoveredSlotIndex = -1;
-            for (int i = 0; i < screen.getMenu().slots.size(); i++) {
-                var slot = screen.getMenu().slots.get(i);
-                if (screen.isHovering(slot, mouseX, mouseY)) { hoveredSlotIndex = i; break; }
+            // Attempt to use public getSlotUnderMouse() to identify the hovered slot; fall back to manual scan if null
+            net.minecraft.world.inventory.Slot hovered = screen.getSlotUnderMouse();
+            if (hovered != null) {
+                hoveredSlotIndex = hovered.index;
+            } else {
+                // fallback: iterate over slots and compare mouse position against slot bounds (16x16)
+                for (int i = 0; i < screen.getMenu().slots.size(); i++) {
+                    var slot = screen.getMenu().slots.get(i);
+                    int sx = slot.x;
+                    int sy = slot.y;
+                    // approximate slot size (16x16)
+                    if (mouseX >= sx && mouseX < sx + 16 && mouseY >= sy && mouseY < sy + 16) {
+                        hoveredSlotIndex = i;
+                        break;
+                    }
+                }
             }
+
             if (hoveredSlotIndex >= 0) {
                 invHoldTicks++;
                 if (invHoldTicks >= SCAN_TICKS_INVENTORY) {
@@ -111,7 +124,9 @@ public class ThaumometerItem extends Item {
                             new ScanRequestPacket(ScanRequestPacket.Type.ITEM_SLOT, null, -1, hoveredSlotIndex));
                     invHoldTicks = 0;
                 }
-            } else invHoldTicks = 0;
+            } else {
+                invHoldTicks = 0;
+            }
         }
     }
 }
