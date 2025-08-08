@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.*;
 
@@ -29,14 +30,26 @@ public class AspectDataManager extends SimpleJsonResourceReloadListener {
             ITEM_ASPECTS.put(e.getKey(), map);
         }
     }
-    public static Map<String, Integer> getAspects(ItemStack stack) {
-        if (stack.isEmpty()) return Collections.emptyMap();
-        ResourceLocation id = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem());
+    // Возвращает ТОЛЬКО явные (из data JSON) аспекты предмета; генератор не используется
+    public static Map<String, Integer> getExplicitAspects(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) return Collections.emptyMap();
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         Map<String, Integer> map = ITEM_ASPECTS.get(id);
         return map != null ? map : Collections.emptyMap();
     }
+
+    // Возвращает аспекты предмета, сначала explicit; если нет — автогенерация (если включена)
+    public static Map<String, Integer> getAspects(ItemStack stack, ServerLevel level) {
+        Map<String, Integer> explicit = getExplicitAspects(stack);
+        if (!explicit.isEmpty()) return explicit;
+
+        if (thaumcraft.config.TCConfig.GENERATE_ASPECTS.get() && level != null) {
+            return AspectGenerator.generate(level, stack);
+        }
+        return Collections.emptyMap();
+    }
     public static void grantScanForItem(ServerPlayer player, ItemStack stack) {
-        var aspects = getAspects(stack);
+        var aspects = getAspects(stack, player.serverLevel());
         if (!aspects.isEmpty())
             player.displayClientMessage(net.minecraft.network.chat.Component.literal("Scanned: " + stack.getDisplayName().getString() + " → " + aspects), true);
         else
