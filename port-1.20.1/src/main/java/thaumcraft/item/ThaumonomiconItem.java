@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import thaumcraft.client.screen.ThaumonomiconScreen;
+import thaumcraft.client.gui.ThaumonomiconScreen;
 
 public class ThaumonomiconItem extends Item {
     public ThaumonomiconItem(Properties props) { super(props); }
