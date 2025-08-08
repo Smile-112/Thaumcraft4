@@ -17,7 +17,6 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      # Устанавливаем Gradle без wrapper
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
