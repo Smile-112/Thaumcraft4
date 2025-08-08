@@ -1,8 +1,6 @@
 {
   "pack": {
-    "description": "Thaumcraft resources",
     "pack_format": 15,
-    "forge:resource_pack_format": 15,
-    "forge:data_pack_format": 15
+    "description": "Thaumcraft (Port) resources"
   }
 }

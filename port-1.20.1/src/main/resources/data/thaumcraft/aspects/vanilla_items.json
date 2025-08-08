@@ -1,0 +1,16 @@
+{
+  "minecraft:dirt": {
+    "Terra": 1
+  },
+  "minecraft:stone": {
+    "Ordo": 1
+  },
+  "minecraft:oak_log": {
+    "Herba": 1,
+    "Terra": 1
+  },
+  "entity/minecraft:sheep": {
+    "Herba": 1,
+    "Terra": 1
+  }
+}

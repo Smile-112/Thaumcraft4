@@ -29,7 +29,7 @@ public class ThaumometerItem extends Item {
         MinecraftForge.EVENT_BUS.register(new ClientHook());
     }
 
-    @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.SPYGLASS; }
+    @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.NONE; }
     @Override public int getUseDuration(ItemStack stack) { return 72000; }
 
     @Override
