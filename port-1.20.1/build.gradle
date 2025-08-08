@@ -10,10 +10,7 @@ archivesBaseName = 'Thaumcraft'
 
 java {
     toolchain {
-        // Use the available JDK for now. Forge 1.20.1 targets Java 17,
-        // but this environment currently provides JDK 21. Adjust if a
-        // Java 17 toolchain becomes available.
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 

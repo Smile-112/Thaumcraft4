@@ -5,3 +5,4 @@ run/
 run-data/
 .DS_Store
 out/
+**/gradle-wrapper.jar
