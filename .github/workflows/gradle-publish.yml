@@ -10,21 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
+
       - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew || true
-      - name: Build
+        run: chmod +x ./port-1.20.1/gradlew || true
+
+      - name: Build mod
         run: |
           cd port-1.20.1
           ./gradlew --no-daemon build
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           name: thaumcraft-port-build
           path: |
-            build/libs/*.jar
-            */build/libs/*.jar
+            port-1.20.1/build/libs/*.jar
