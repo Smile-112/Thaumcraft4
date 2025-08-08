@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All rights reserved"
+
+[[mods]]
+modId="thaumcraft"
+version="0.1"
+displayName="Thaumcraft"
+
+[[dependencies.thaumcraft]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
