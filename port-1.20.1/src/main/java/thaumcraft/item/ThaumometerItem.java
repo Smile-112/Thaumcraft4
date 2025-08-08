@@ -16,6 +16,8 @@ import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.network.PacketDistributor;
 import thaumcraft.network.NetworkHandler;
 import thaumcraft.network.ScanRequestPacket;
@@ -26,7 +28,7 @@ public class ThaumometerItem extends Item {
 
     public ThaumometerItem(Properties props) {
         super(props);
-        MinecraftForge.EVENT_BUS.register(new ClientHook());
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () -> MinecraftForge.EVENT_BUS.register(new ClientHook()));
     }
 
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.SPYGLASS; }

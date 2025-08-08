@@ -11,7 +11,7 @@ public class NetworkHandler {
     private static int index = 0;
     public static void init() {
         CHANNEL = ChannelBuilder.named(new ResourceLocation(Thaumcraft.MODID, "main"))
-                .networkProtocolVersion(1)
+                .networkProtocolVersion(() -> "1")
                 .clientAcceptedVersions(s->true)
                 .serverAcceptedVersions(s->true)
                 .simpleChannel();

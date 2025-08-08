@@ -1,5 +1,6 @@
 {
   "item.thaumcraft.thaumometer": "Thaumometer",
   "item.thaumcraft.thaumonomicon": "Thaumonomicon",
-  "block.thaumcraft.aura_node": "Aura Node"
+  "block.thaumcraft.aura_node": "Aura Node",
+  "itemGroup.thaumcraft.main": "Thaumcraft (Port)"
 }
